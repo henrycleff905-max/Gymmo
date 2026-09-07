@@ -1,0 +1,1723 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Gimm Sport</title>
+
+<style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      color: #333;
+    }
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    header {
+      background: linear-gradient(135deg, #1f2937, #2c3e50);
+      color: white;
+      text-align: center;
+      padding: 35px 20px;
+    }
+
+    header h1 {
+margin: 0 0 10px;
+      font-size: 2.5rem;
+}
+
+    header p {
+      margin: 0;
+      font-size: 1.1rem;
+    }
+
+    /* =========================
+       NAVIGATION
+    ========================= */
+
+    nav {
+      background: #34495e;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      padding: 15px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 5px 15px;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #f39c12;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero {
+      min-height: 420px;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,0.45),
+          rgba(0,0,0,0.45)
+        ),
+        url("https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      text-align: center;
+      color: white;
+      padding: 30px;
+    }
+
+    .hero h2 {
+      font-size: 3rem;
+      margin: 0;
+      text-shadow: 2px 2px 5px black;
+    }
+
+    /* =========================
+       INTRO
+    ========================= */
+
+    .intro {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+text-align: center;
+    }
+
+    .intro h2 {
+      color: #2c3e50;
+}
+
+    .intro p {
+      line-height: 1.7;
+      color: #555;
+    }
+
+    /* =========================
+       SPORTS
+    ========================= */
+
+    .sports {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+
+      gap: 25px;
+
+      max-width: 1400px;
+      margin: auto;
+padding: 20px;
+    }
+
+    .sport-card {
+      background: white;
+
+      width: 400px;
+      max-width: 100%;
+
+      border-radius: 15px;
+      overflow: hidden;
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.15);
+
+      transition:
+        transform 0.3s,
+        box-shadow 0.3s;
+    }
+
+    .sport-card:hover {
+      transform: translateY(-5px);
+
+      box-shadow:
+        0 10px 30px rgba(0,0,0,0.20);
+    }
+
+    .sport-card > img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .sport-content {
+      padding: 20px;
+    }
+
+    .sport-content h3 {
+      margin-top: 0;
+      font-size: 1.8rem;
+      color: #2c3e50;
+    }
+
+    .sport-content > p {
+      color: #666;
+      line-height: 1.6;
+    }
+
+    /* =========================
+       CATEGORY BUTTON
+    ========================= */
+
+    .category-button {
+      width: 100%;
+
+      border: none;
+
+      background: #2c3e50;
+      color: white;
+
+      padding: 14px;
+
+      border-radius: 8px;
+
+      cursor: pointer;
+
+      font-size: 1rem;
+      font-weight: bold;
+
+      margin-top: 10px;
+
+      transition: 0.3s;
+    }
+
+    .category-button:hover {
+      background: #f39c12;
+    }
+
+    /* =========================
+       CATEGORY CONTENT
+    ========================= */
+
+    .category-content {
+      display: none;
+
+      margin-top: 20px;
+
+      border-top: 2px solid #eee;
+
+      padding-top: 20px;
+    }
+
+    .category-content.active {
+      display: block;
+    }
+
+    /* =========================
+       LEVEL
+    ========================= */
+
+    .level {
+      margin-bottom: 15px;
+
+      border-radius: 10px;
+
+      overflow: hidden;
+
+      border: 1px solid #ddd;
+    }
+
+    .level-title {
+      width: 100%;
+
+      border: none;
+
+      padding: 15px;
+
+      text-align: left;
+
+      color: white;
+
+      cursor: pointer;
+
+      font-size: 1rem;
+      font-weight: bold;
+
+      transition: 0.3s;
+    }
+
+    .level-title:hover {
+      opacity: 0.9;
+    }
+
+    .beginner {
+      background: #27ae60;
+    }
+
+    .normal {
+      background: #2980b9;
+    }
+
+    .advanced {
+      background: #8e44ad;
+    }
+
+    .professional {
+      background: #c0392b;
+    }
+
+    /* =========================
+       LEVEL CONTENT
+    ========================= */
+
+    .level-content {
+      display: none;
+
+      background: #fafafa;
+
+      padding: 15px;
+    }
+
+    .level-content.active {
+      display: block;
+    }
+
+    /* =========================
+       EXERCISE
+    ========================= */
+
+    .exercise {
+      margin-bottom: 8px;
+    }
+
+    .exercise-button {
+      width: 100%;
+
+      border: none;
+
+      background: #ecf0f1;
+
+      padding: 12px;
+
+      text-align: left;
+
+      border-radius: 6px;
+
+      cursor: pointer;
+
+      font-weight: bold;
+
+      color: #34495e;
+
+      transition: 0.2s;
+    }
+
+    .exercise-button:hover {
+      background: #dfe6e9;
+      color: #222;
+    }
+
+    .exercise-description {
+      display: none;
+
+      background: white;
+
+      padding: 12px;
+
+      margin-top: 3px;
+
+      border-left: 4px solid #f39c12;
+
+      line-height: 1.6;
+
+      color: #555;
+    }
+
+    .exercise-description.active {
+      display: block;
+    }
+
+    /* =========================
+       VIDEO
+    ========================= */
+
+    .video-button {
+      display: block;
+
+      text-align: center;
+
+      background: #e74c3c;
+
+      color: white;
+
+      text-decoration: none;
+
+      padding: 12px;
+
+      border-radius: 7px;
+
+      margin-top: 15px;
+
+      font-weight: bold;
+
+      transition: 0.3s;
+    }
+
+    .video-button:hover {
+      background: #c0392b;
+    }
+
+    /* =========================
+       NUMBER OF EXERCISES
+    ========================= */
+
+    .exercise-count {
+      background: #fff;
+
+      padding: 10px;
+
+      margin-bottom: 12px;
+
+      border-radius: 6px;
+
+      color: #555;
+
+      font-size: 0.9rem;
+
+      text-align: center;
+    }
+
+    /* =========================
+       CONTACT
+    ========================= */
+
+    .contact {
+      max-width: 900px;
+
+      margin: 50px auto;
+
+      padding: 30px 20px;
+
+      text-align: center;
+
+      background: white;
+
+      border-radius: 15px;
+
+      box-shadow:
+        0 5px 20px rgba(0,0,0,0.08);
+    }
+
+    .contact h2 {
+      color: #2c3e50;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer {
+      background: #2c3e50;
+
+      color: white;
+
+      text-align: center;
+
+      padding: 25px;
+
+      margin-top: 40px;
+    }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media (max-width: 600px) {
+
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .hero {
+        min-height: 300px;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .sport-card {
+        width: 100%;
+      }
+
+      nav a {
+        margin: 5px 8px;
+      }
+
+      .sport-card > img {
+        height: 210px;
+      }
+    }
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+       HEADER
+  ========================= -->
+
+<header>
+
+<h1>
+      Bienvenue sur Gimm Sport
+</h1>
+
+<p>
+      Le sport, c'est la vie ! 💪
+</p>
+
+</header>
+
+
+<!-- =========================
+       NAVIGATION
+  ========================= -->
+
+<nav>
+
+<a href="#accueil">
+      Accueil
+</a>
+
+<a href="#sports">
+      Sports
+</a>
+
+<a href="#contact">
+      Contact
+</a>
+
+</nav>
+
+
+<!-- =========================
+       HERO
+  ========================= -->
+
+<section id="accueil" class="hero">
+
+<div>
+
+<h2>
+        Gym & Performance
+</h2>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+       INTRODUCTION
+  ========================= -->
+
+<section class="intro">
+
+<h2>
+      Choisis ton sport
+</h2>
+
+<p>
+      Découvre des exercices adaptés à ton niveau.
+      Choisis une catégorie puis sélectionne ton niveau :
+      débutant, normal, avancé ou professionnel.
+</p>
+
+<p>
+      Chaque niveau contient 30 exercices et une source
+      pour regarder des vidéos d'entraînement.
+</p>
+
+</section>
+
+
+<!-- =========================
+       SPORTS
+  ========================= -->
+
+<section id="sports" class="sports">
+
+
+<!-- =====================================================
+         MUSCULATION
+    ====================================================== -->
+
+<div class="sport-card">
+
+<img
+        src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=900&q=80"
+        alt="Personne faisant de la musculation"
+>
+
+<div class="sport-content">
+
+<h3>
+🏋️ Musculation
+</h3>
+
+<p>
+          Développe ta force, ta mobilité, ton endurance musculaire
+          et ta technique grâce à une progression adaptée à ton niveau.
+</p>
+
+<button
+          class="category-button"
+          onclick="toggleCategory('musculation')"
+>
+          Voir les exercices de musculation
+</button>
+
+<div
+          id="musculation"
+          class="category-content"
+>
+
+<div
+            id="musculation-levels"
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+         YOGA
+    ====================================================== -->
+
+<div class="sport-card">
+
+<img
+        src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=900&q=80"
+        alt="Femme faisant du yoga"
+>
+
+<div class="sport-content">
+
+<h3>
+🧘 Yoga
+</h3>
+
+<p>
+          Améliore ta souplesse, ton équilibre, ta respiration,
+          ta mobilité et ta concentration grâce à des exercices
+          progressifs.
+</p>
+
+<button
+          class="category-button"
+          onclick="toggleCategory('yoga')"
+>
+          Voir les exercices de yoga
+</button>
+
+<div
+          id="yoga"
+          class="category-content"
+>
+
+<div
+            id="yoga-levels"
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+         COURSE
+    ====================================================== -->
+
+<div class="sport-card">
+
+<img
+        src="https://images.unsplash.com/photo-1552674605-db6ffd4facb5?auto=format&fit=crop&w=900&q=80"
+        alt="Groupe de personnes courant"
+>
+
+<div class="sport-content">
+
+<h3>
+🏃 Course
+</h3>
+
+<p>
+          Améliore ton endurance, ta vitesse, ta cadence et ta
+          condition cardiovasculaire grâce à une progression adaptée.
+</p>
+
+<button
+          class="category-button"
+          onclick="toggleCategory('course')"
+>
+          Voir les exercices de course
+</button>
+
+<div
+          id="course"
+          class="category-content"
+>
+
+<div
+            id="course-levels"
+></div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+       CONTACT
+  ========================= -->
+
+<section
+    id="contact"
+    class="contact"
+>
+
+<h2>
+📩 Contact
+</h2>
+
+<p>
+      Une question sur les exercices ou les entraînements ?
+</p>
+
+<p>
+<strong>Email :</strong>
+      henrycleff905@gmail.com
+</p>
+
+<p>
+<strong>Téléphone :</strong>
+      31088464
+</p>
+
+</section>
+
+
+<!-- =========================
+       FOOTER
+  ========================= -->
+
+<footer>
+
+<p>
+      © 2026 Gimm Sport - Le sport, c'est la vie ! 💪
+</p>
+
+</footer>
+
+
+<!-- =====================================================
+       JAVASCRIPT
+  ====================================================== -->
+
+<script>
+
+    /*
+    ========================================================
+    DONNÉES DES EXERCICES
+    ========================================================
+    */
+
+    const sportsData = {
+
+      /*
+      ======================================================
+      MUSCULATION
+      ======================================================
+      */
+
+      musculation: {
+
+        name: "Musculation",
+
+        levels: {
+
+          beginner: {
+
+            title: "🟢 Débutant",
+
+            video:
+              "https://www.youtube.com/results?search_query=musculation+debutant+exercices",
+
+            exercises: [
+
+              "Squat au poids du corps",
+              "Pompes adaptées",
+              "Fentes avant",
+              "Gainage",
+              "Pont fessier",
+              "Crunch abdominal",
+              "Bird Dog",
+              "Élévations de mollets",
+              "Chaise contre un mur",
+              "Step-up sur une marche",
+              "Pompes contre un mur",
+              "Squat avec pause",
+              "Fente arrière",
+              "Abduction de hanche",
+              "Élévation de jambe",
+              "Planche sur les genoux",
+              "Superman",
+              "Marche sur place",
+              "Jumping Jacks adaptés",
+              "Mountain Climbers lents",
+              "Russian Twist sans charge",
+              "Dead Bug",
+              "Donkey Kicks",
+              "Fire Hydrant",
+              "Good Morning sans charge",
+              "Élévation latérale sans charge",
+              "Cercles avec les bras",
+              "Extension des triceps au mur",
+              "Rowing avec bouteille d'eau",
+              "Curl biceps avec bouteilles"
+
+            ]
+
+          },
+
+          normal: {
+
+            title: "🔵 Normal",
+
+            video:
+              "https://www.youtube.com/results?search_query=musculation+intermediaire+workout",
+
+            exercises: [
+
+              "Squat avec haltères",
+              "Développé couché",
+              "Rowing avec haltères",
+              "Soulevé de terre léger",
+              "Développé épaules",
+              "Presse à jambes",
+              "Fentes avec haltères",
+              "Hip Thrust",
+              "Leg Curl",
+              "Leg Extension",
+              "Tirage vertical",
+              "Tirage horizontal",
+              "Curl biceps",
+              "Extension triceps",
+              "Élévations latérales",
+              "Élévations frontales",
+              "Développé incliné",
+              "Écarté avec haltères",
+              "Goblet Squat",
+              "Bulgarian Split Squat",
+              "Soulevé de terre jambes tendues",
+              "Mollets debout",
+              "Mollets assis",
+              "Planche avec déplacement",
+              "Planche latérale",
+              "Crunch inversé",
+              "Relevé de jambes",
+              "Mountain Climbers",
+              "Burpees adaptés",
+              "Kettlebell Swing"
+
+            ]
+
+          },
+
+          advanced: {
+
+            title: "🟣 Avancé",
+
+            video:
+              "https://www.youtube.com/results?search_query=advanced+strength+training+workout",
+
+            exercises: [
+
+              "Squat lourd",
+              "Soulevé de terre",
+              "Tractions",
+              "Dips",
+              "Développé couché lourd",
+              "Développé incliné lourd",
+              "Front Squat",
+              "Bulgarian Split Squat chargé",
+              "Hip Thrust lourd",
+              "Soulevé de terre roumain",
+              "Good Morning chargé",
+              "Push Press",
+              "Développé militaire",
+              "Rowing barre",
+              "T-Bar Row",
+              "Tractions lestées",
+              "Dips lestés",
+              "Presse à jambes lourde",
+              "Hack Squat",
+              "Leg Press unilatérale",
+              "Nordic Curl",
+              "Mollets lestés",
+              "Ab Wheel",
+              "Dragon Flag",
+              "Hanging Leg Raise",
+              "Toes to Bar",
+              "Burpees explosifs",
+              "Box Jump",
+              "Kettlebell Swing lourd",
+              "Farmer Walk"
+
+            ]
+
+          },
+
+          professional: {
+
+            title: "🔴 Professionnel",
+
+            video:
+              "https://www.youtube.com/results?search_query=professional+bodybuilding+workout",
+
+            exercises: [
+
+              "Périodisation de l'entraînement",
+              "Drop Set",
+              "Cluster Set",
+              "Rest-Pause",
+              "Superset",
+              "Giant Set",
+              "Pré-fatigue musculaire",
+              "Post-fatigue musculaire",
+              "Volume d'entraînement avancé",
+              "Gestion de l'intensité",
+              "Squat compétition",
+              "Soulevé de terre compétition",
+              "Développé couché compétition",
+              "Power Clean",
+              "Power Snatch",
+              "Clean and Jerk",
+              "Push Jerk",
+              "Front Squat lourd",
+              "Deadlift lourd",
+              "Squat pause lourd",
+              "Développé couché pause",
+              "Tractions lestées lourdes",
+              "Dips lestés lourds",
+              "Muscle Up",
+              "Handstand Push-Up",
+              "Plyométrie avancée",
+              "Sauts en profondeur",
+              "Sprints résistés",
+              "Travail de puissance",
+              "Planification annuelle"
+
+            ]
+
+          }
+
+        }
+
+      },
+
+
+      /*
+      ======================================================
+      YOGA
+      ======================================================
+      */
+
+      yoga: {
+
+        name: "Yoga",
+
+        levels: {
+
+          beginner: {
+
+            title: "🟢 Débutant",
+
+            video:
+              "https://www.youtube.com/results?search_query=yoga+debutant",
+
+            exercises: [
+
+              "Respiration consciente",
+              "Posture de l'enfant",
+              "Chat-Vache",
+              "Chien tête en bas",
+              "Posture de la montagne",
+              "Posture du cadavre",
+              "Flexion avant douce",
+              "Posture du sphinx",
+              "Cobra doux",
+              "Papillon",
+              "Torsion assise douce",
+              "Genoux-poitrine",
+              "Pont",
+              "Jambes contre le mur",
+              "Guerrier I débutant",
+              "Guerrier II débutant",
+              "Triangle simplifié",
+              "Arbre avec support",
+              "Fente basse",
+              "Pince assise douce",
+              "Étirement des épaules",
+              "Étirement du cou",
+              "Étirement des poignets",
+              "Respiration abdominale",
+              "Respiration alternée simple",
+              "Posture du bébé heureux",
+              "Torsion allongée",
+              "Étirement des ischio-jambiers",
+              "Relaxation guidée",
+              "Méditation assise"
+
+            ]
+
+          },
+
+          normal: {
+
+            title: "🔵 Normal",
+
+            video:
+              "https://www.youtube.com/results?search_query=yoga+intermediate",
+
+            exercises: [
+
+              "Salutation au soleil",
+              "Guerrier I",
+              "Guerrier II",
+              "Triangle",
+              "Arbre",
+              "Guerrier inversé",
+              "Demi-Lune",
+              "Pigeon",
+              "Cobra",
+              "Arc",
+              "Bateau",
+              "Planche",
+              "Planche latérale",
+              "Corbeau préparatoire",
+              "Chandelle préparatoire",
+              "Pont",
+              "Roue préparatoire",
+              "Torsion assise",
+              "Torsion allongée",
+              "Pince debout",
+              "Pince assise",
+              "Posture du danseur",
+              "Aigle",
+              "Chameau",
+              "Poisson",
+              "Locuste",
+              "Grenouille",
+              "Héros",
+              "Lotus préparatoire",
+              "Flow dynamique"
+
+            ]
+
+          },
+
+          advanced: {
+
+            title: "🟣 Avancé",
+
+            video:
+              "https://www.youtube.com/results?search_query=advanced+yoga+practice",
+
+            exercises: [
+
+              "Corbeau",
+              "Corbeau latéral",
+              "Équilibre sur les mains",
+              "Handstand préparatoire",
+              "Pigeon avancé",
+              "Roue",
+              "Roue avancée",
+              "Scorpion préparatoire",
+              "Avant-bras en équilibre",
+              "Pincha Mayurasana",
+              "Aigle avancé",
+              "Danseur avancé",
+              "Lotus complet",
+              "Lotus lié",
+              "Tête-genou avancée",
+              "Pince profonde",
+              "Hanumanasana",
+              "Split latéral",
+              "Chameau profond",
+              "Arc avancé",
+              "Bateau avancé",
+              "Torsion avancée",
+              "Équilibre sur une jambe",
+              "Transitions bras tendus",
+              "Transitions sautées",
+              "Flow Vinyasa avancé",
+              "Pranayama avancé",
+              "Méditation longue",
+              "Mobilité profonde",
+              "Flow avancé complet"
+
+            ]
+
+          },
+
+          professional: {
+
+            title: "🔴 Professionnel",
+
+            video:
+              "https://www.youtube.com/results?search_query=professional+advanced+yoga",
+
+            exercises: [
+
+              "Handstand libre",
+              "Handstand press",
+              "Handstand à une main",
+              "Pincha avancé",
+              "Scorpion",
+              "Scorpion sur une main",
+              "Planche yogique",
+              "Planche sur les mains",
+              "L-Sit",
+              "Press to Handstand",
+              "Dragon Pose",
+              "Pigeon King",
+              "Roue sur les avant-bras",
+              "Lotus inversé",
+              "Lotus lié avancé",
+              "Hanumanasana avancé",
+              "Équilibre avancé sur les bras",
+              "Transitions aériennes",
+              "Transitions sans appui",
+              "Flow professionnel",
+              "Vinyasa avancé",
+              "Ashtanga avancé",
+              "Pranayama avancé",
+              "Respiration contrôlée",
+              "Méditation avancée",
+              "Mobilité extrême progressive",
+              "Flexibilité active",
+              "Contrôle corporel avancé",
+              "Séquence professionnelle",
+              "Flow de compétition"
+
+            ]
+
+          }
+
+        }
+
+      },
+
+
+      /*
+      ======================================================
+      COURSE
+      ======================================================
+      */
+
+      course: {
+
+        name: "Course",
+
+        levels: {
+
+          beginner: {
+
+            title: "🟢 Débutant",
+
+            video:
+              "https://www.youtube.com/results?search_query=running+beginner+training",
+
+            exercises: [
+
+              "Marche rapide",
+              "Course lente",
+              "Course-marche",
+              "Foulées courtes",
+              "Retour au calme",
+              "Échauffement dynamique",
+              "Marche avec montée de genoux",
+              "Talons-fesses",
+              "Petites accélérations",
+              "Course sur terrain plat",
+              "Course facile",
+              "Jogging léger",
+              "Marche en côte",
+              "Course légère en côte",
+              "Course 5 minutes",
+              "Course 10 minutes",
+              "Intervalles marche-course",
+              "Foulées contrôlées",
+              "Travail de posture",
+              "Travail des bras",
+              "Cadence confortable",
+              "Respiration pendant la course",
+              "Départ progressif",
+              "Fin de séance lente",
+              "Marche de récupération",
+              "Mobilité avant course",
+              "Mobilité après course",
+              "Petites foulées rapides",
+              "Course avec pauses",
+              "Séance découverte"
+
+            ]
+
+          },
+
+          normal: {
+
+            title: "🔵 Normal",
+
+            video:
+              "https://www.youtube.com/results?search_query=running+intermediate+training",
+
+            exercises: [
+
+              "Course continue",
+              "Endurance fondamentale",
+              "Accélérations",
+              "Sortie longue",
+              "Travail de cadence",
+              "Course progressive",
+              "Fartlek léger",
+              "Intervalles courts",
+              "Montées modérées",
+              "Descentes contrôlées",
+              "Tempo léger",
+              "Course 5 km",
+              "Course 10 km",
+              "Fractionné léger",
+              "Strides",
+              "Travail de foulée",
+              "Travail de posture",
+              "Travail de fréquence",
+              "Endurance active",
+              "Course à allure régulière",
+              "Course progressive longue",
+              "Intervalles 1 minute",
+              "Intervalles 2 minutes",
+              "Intervalles 3 minutes",
+              "Récupération active",
+              "Course sur terrain vallonné",
+              "Course sur piste",
+              "Travail de relance",
+              "Sortie récupération",
+              "Séance mixte"
+
+            ]
+
+          },
+
+          advanced: {
+
+            title: "🟣 Avancé",
+
+            video:
+              "https://www.youtube.com/results?search_query=advanced+running+workout",
+
+            exercises: [
+
+              "Fractionné",
+              "Travail en côte",
+              "Tempo Run",
+              "Fartlek",
+              "Intervalles",
+              "Intervalles 400 mètres",
+              "Intervalles 800 mètres",
+              "Intervalles 1000 mètres",
+              "Seuil",
+              "Allure 5 km",
+              "Allure 10 km",
+              "Sortie longue progressive",
+              "Sortie longue avec tempo",
+              "Sprints courts",
+              "Sprints en côte",
+              "Strides avancés",
+              "Travail de cadence",
+              "Travail de foulée",
+              "Pyramide d'intervalles",
+              "Fartlek structuré",
+              "Tempo progressif",
+              "Seuil fractionné",
+              "Course vallonnée",
+              "Course technique",
+              "Travail de relance",
+              "Intervalles rapides",
+              "Intervalles récupération courte",
+              "Sortie longue contrôlée",
+              "Séance piste",
+              "Simulation de course"
+
+            ]
+
+          },
+
+          professional: {
+
+            title: "🔴 Professionnel",
+
+            video:
+              "https://www.youtube.com/results?search_query=professional+running+training",
+
+            exercises: [
+
+              "Fractionné haute intensité",
+              "Travail au seuil",
+              "Sortie longue structurée",
+              "Travail de vitesse",
+              "Préparation compétition",
+              "Intervalles 400 mètres",
+              "Intervalles 800 mètres",
+              "Intervalles 1000 mètres",
+              "Intervalles 1600 mètres",
+              "Sprints maximaux contrôlés",
+              "Sprints en côte",
+              "Résistance à la vitesse",
+              "Allure compétition",
+              "Allure marathon",
+              "Allure semi-marathon",
+              "Allure 10 km",
+              "Allure 5 km",
+              "Tempo long",
+              "Tempo fractionné",
+              "Seuil avancé",
+              "Fartlek professionnel",
+              "Pyramide avancée",
+              "Travail de puissance",
+              "Travail de cadence",
+              "Travail biomécanique",
+              "Sortie longue avec blocs",
+              "Simulation de compétition",
+              "Préparation spécifique",
+              "Affûtage",
+              "Planification compétition"
+
+            ]
+
+          }
+
+        }
+
+      }
+
+    };
+
+
+    /*
+    ========================================================
+    DESCRIPTION AUTOMATIQUE
+    ========================================================
+    */
+
+    function getDescription(
+      sport,
+      level,
+      exercise,
+      number
+    ) {
+
+      if (sport === "musculation") {
+
+        return `
+<strong>${exercise}</strong><br><br>
+
+          Exercice de musculation de niveau
+<strong>${level}</strong>.
+
+          Concentre-toi sur une exécution contrôlée,
+          une bonne posture et une respiration régulière.
+
+          Commence avec une charge adaptée à ton niveau
+          et augmente progressivement la difficulté.
+
+<br><br>
+
+<strong>Conseil :</strong>
+          privilégie toujours la technique avant d'augmenter
+          la charge ou le nombre de répétitions.
+        `;
+
+      }
+
+
+      if (sport === "yoga") {
+
+        return `
+<strong>${exercise}</strong><br><br>
+
+          Posture ou exercice de yoga de niveau
+<strong>${level}</strong>.
+
+          Respire lentement et reste attentif à l'alignement
+          du corps.
+
+          Ne force jamais une articulation et progresse
+          progressivement.
+
+<br><br>
+
+<strong>Conseil :</strong>
+          si une posture provoque une douleur importante,
+          arrête l'exercice et reviens à une position confortable.
+        `;
+
+      }
+
+
+      if (sport === "course") {
+
+        return `
+<strong>${exercise}</strong><br><br>
+
+          Exercice de course de niveau
+<strong>${level}</strong>.
+
+          Commence progressivement et adapte l'intensité
+          à ton niveau actuel.
+
+          Garde une posture naturelle et une respiration
+          régulière.
+
+<br><br>
+
+<strong>Conseil :</strong>
+          augmente progressivement la durée ou l'intensité
+          plutôt que de tout augmenter en même temps.
+        `;
+
+      }
+
+      return `
+        Exercice ${number} :
+        ${exercise}.
+        Réalise le mouvement progressivement
+        et adapte l'intensité à ton niveau.
+      `;
+
+    }
+
+
+    /*
+    ========================================================
+    CRÉER UN EXERCICE
+    ========================================================
+    */
+
+    function createExercise(
+      sport,
+      level,
+      exercise,
+      number,
+      prefix
+    ) {
+
+      const exerciseId =
+        prefix + "-" + number;
+
+      return `
+
+<div class="exercise">
+
+<button
+            class="exercise-button"
+            onclick="toggleExercise('${exerciseId}')"
+>
+
+            ${number}.
+            ${exercise}
+
+</button>
+
+
+<div
+            id="${exerciseId}"
+            class="exercise-description"
+>
+
+            ${getDescription(
+              sport,
+              level,
+              exercise,
+              number
+            )}
+
+</div>
+
+</div>
+
+      `;
+
+    }
+
+
+    /*
+    ========================================================
+    CRÉER UN NIVEAU
+    ========================================================
+    */
+
+    function createLevel(
+      sport,
+      levelKey,
+      levelData
+    ) {
+
+      const uniqueId =
+        sport + "-" + levelKey;
+
+      const prefix =
+        sport.substring(0, 3) +
+        "-" +
+        levelKey;
+
+      let exercisesHTML = "";
+
+      levelData.exercises.forEach(
+        function(exercise, index) {
+
+          exercisesHTML +=
+            createExercise(
+              sport,
+              levelKey,
+              exercise,
+              index + 1,
+              prefix
+            );
+
+        }
+      );
+
+
+      return `
+
+<div class="level">
+
+<button
+            class="level-title ${levelKey}"
+            onclick="toggleLevel('${uniqueId}')"
+>
+
+            ${levelData.title}
+
+<span>
+              — ${levelData.exercises.length} exercices
+</span>
+
+</button>
+
+
+<div
+            id="${uniqueId}"
+            class="level-content"
+>
+
+<div class="exercise-count">
+
+📚
+              ${levelData.exercises.length}
+              exercices disponibles pour ce niveau
+
+</div>
+
+
+            ${exercisesHTML}
+
+
+<a
+              class="video-button"
+              href="${levelData.video}"
+              target="_blank"
+              rel="noopener noreferrer"
+>
+
+🎥
+              Voir des vidéos
+              ${levelData.title.replace(
+                /[🟢🔵🟣🔴]/g,
+                ""
+              )}
+
+</a>
+
+</div>
+
+</div>
+
+      `;
+
+    }
+
+
+    /*
+    ========================================================
+    AFFICHER LES NIVEAUX
+    ========================================================
+    */
+
+    function renderSport(
+      sport
+    ) {
+
+      const container =
+        document.getElementById(
+          sport + "-levels"
+        );
+
+      if (!container) {
+        return;
+      }
+
+      const levels =
+        sportsData[sport].levels;
+
+
+      let html = "";
+
+
+      Object.keys(levels).forEach(
+        function(levelKey) {
+
+          html +=
+            createLevel(
+              sport,
+              levelKey,
+              levels[levelKey]
+            );
+
+        }
+      );
+
+
+      container.innerHTML = html;
+
+    }
+
+
+    /*
+    ========================================================
+    AFFICHER TOUS LES SPORTS
+    ========================================================
+    */
+
+    renderSport("musculation");
+
+    renderSport("yoga");
+
+    renderSport("course");
+
+
+    /*
+    ========================================================
+    OUVRIR / FERMER UNE CATÉGORIE
+    ========================================================
+    */
+
+    function toggleCategory(
+      id
+    ) {
+
+      const category =
+        document.getElementById(id);
+
+      if (!category) {
+        return;
+      }
+
+      category.classList.toggle(
+        "active"
+      );
+
+    }
+
+
+    /*
+    ========================================================
+    OUVRIR / FERMER UN NIVEAU
+    ========================================================
+    */
+
+    function toggleLevel(
+      id
+    ) {
+
+      const level =
+        document.getElementById(id);
+
+      if (!level) {
+        return;
+      }
+
+      level.classList.toggle(
+        "active"
+      );
+
+    }
+
+
+    /*
+    ========================================================
+    OUVRIR / FERMER UN EXERCICE
+    ========================================================
+    */
+
+    function toggleExercise(
+      id
+    ) {
+
+      const exercise =
+        document.getElementById(id);
+
+      if (!exercise) {
+        return;
+      }
+
+      exercise.classList.toggle(
+        "active"
+      );
+
+    }
+
+</script>
+
+</body>
+</html>
